@@ -1,0 +1,12 @@
+.all{
+    padding:10px;
+    border:1px solid #dadce0;
+    display: inline-block;
+    border-radius:8px;
+
+}
+.result{
+    display:flex;
+    flex-direction: column;
+    
+}
