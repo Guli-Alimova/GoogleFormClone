@@ -2,11 +2,10 @@
 import Form from "./components/Form";
 
 
-
-function App() {
+function App(props) {
   return (
     <div className="App">
-     <Form />
+     <Form questionsArray={props.questionsArray}/>
  
     </div>
   );
