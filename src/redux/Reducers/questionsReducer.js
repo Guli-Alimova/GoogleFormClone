@@ -1,4 +1,4 @@
-import { ADD_SELECTED_ANSWER, REMOVE_SELECTED_ANSWER, SUM_TOTAL_SCORE } from "../ActionTypes/ActionTypes"
+import { ADD_SELECTED_ANSWER,SUM_TOTAL_SCORE } from "../ActionTypes/ActionTypes"
 
 const initialState = {
   questions: [
@@ -249,7 +249,6 @@ const initialState = {
 const sumTotalScore = (selectedOptions) => {
   let sum = 0;
   selectedOptions.forEach(selectedOption => {
-    debugger
     sum += selectedOption.score
   })
   return sum

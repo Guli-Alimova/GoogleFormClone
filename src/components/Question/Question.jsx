@@ -11,9 +11,6 @@ const Question = ({questionData, score, onOptionSelected, addSelectedAnswer, sum
       <RadioGroup
       aria-labelledby="demo-controlled-radio-buttons-group"
       name="now-helth"
-      value={score}
-      defaultValue={null}
-      onChange={onOptionSelected}
       >
         {
           questionData.options.length &&
