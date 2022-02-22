@@ -1,43 +1,36 @@
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import SingleOption from './SubComponents/SingleOption';
-import MultipleOption from "./SubComponents/MultipleOption"
-const Question = ({setMainScore, data}) => {
-  const FormContent = styled.div`
-    background-color: #fff;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    padding: 24px;
-    // max-width:600px;
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
+import React from 'react'
+import { FormContent } from '../styled'
 
-    `
-    const [score, setScore] = useState(0)
-
-    // useEffect(() => {
-    //   setMainScore(score)
-    // }, [score])
+const Question = ({questionData, score, onOptionSelected, addSelectedAnswer, sumTotalScore}) => {
   return (
     <>
     <FormContent>
     <FormControl >
-    <FormLabel id="demo-radio-buttons-group-label">{data.title}</FormLabel>
-    {
-      data.options.type === 'single' 
-      ? <SingleOption optionsListData={data.options.optionsList} setScore={setScore} score={score} setMainScore={setMainScore}/>
-      : <MultipleOption
-      setScore={setScore}
-      score={score}
-      optionsListArray={data.options.optionsList} 
-      subOptionTitles={data.options.subOptionTitles}
-      />
-    }
+    <FormLabel id="demo-radio-buttons-group-label">{questionData.title}</FormLabel>
+      <RadioGroup
+      aria-labelledby="demo-controlled-radio-buttons-group"
+      name="now-helth"
+      value={score}
+      defaultValue={null}
+      onChange={onOptionSelected}
+      >
+        {
+          questionData.options.length &&
+          questionData.options.map(option => (
+            <FormControlLabel key={option.id}
+            value={option.score} control={<Radio onClick={() => {
+              addSelectedAnswer({questionId: questionData.id, score: option.score, optionId: option.id})
+              sumTotalScore()
+            }
+          }/>} label={option.title}
+            />
+          ))
+        }
+      </RadioGroup>
     </FormControl>
-  </FormContent>
-    <p>{score}</p>
-    </>
+  </FormContent></>
   )
-};
+}
 
-export default Question;
+export default Question
