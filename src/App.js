@@ -1,12 +1,11 @@
 
-import Form from "./components/Form";
-
+import React from 'react';
+import FormContainer from './Components/Form/FormContainer';
 
 function App(props) {
   return (
     <div className="App">
-     <Form questionsArray={props.questionsArray}/>
- 
+      <FormContainer/>
     </div>
   );
 }
